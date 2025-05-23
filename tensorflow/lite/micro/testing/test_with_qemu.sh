@@ -30,7 +30,7 @@ MICRO_LOG_PATH=${TEST_TMPDIR}/${3}
 MICRO_LOG_FILENAME=${MICRO_LOG_PATH}/logs.txt
 
 mkdir -p ${MICRO_LOG_PATH}
-qemu-${1} -cpu ${2} ${3} 2>&1 | tee ${MICRO_LOG_FILENAME}
+qemu-${1} -cpu ${2} ${QEMU_EXTRA_ARGS} ${3} 2>&1 | tee ${MICRO_LOG_FILENAME}
 if [[ ${4} != "non_test_binary" ]]
 then
   if grep -q "${4}" ${MICRO_LOG_FILENAME}
